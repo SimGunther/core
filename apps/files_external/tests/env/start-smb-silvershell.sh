@@ -23,7 +23,7 @@ echo "Fetch recent silvershell/samba docker image"
 docker pull silvershell/samba
 
 # retrieve current folder to place the config in the parent folder
-thisFolder=`echo $0 | replace "env/start-smb-silvershell.sh" ""`
+thisFolder=`echo $0 | sed 's#env/start-smb-silvershell\.sh##'`
 
 if [ -z "$thisFolder" ]; then
     thisFolder="."
@@ -60,4 +60,3 @@ fi
 # TODO find a way to determine the successful initialization inside the docker container
 echo "Waiting 5 seconds for smbd initialization ... "
 sleep 5
-

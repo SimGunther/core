@@ -17,7 +17,7 @@ fi
 echo "Docker executable found - stop and remove docker containers"
 
 # retrieve current folder to remove the config from the parent folder
-thisFolder=`echo $0 | replace "env/stop-ftp-morrisjobke.sh" ""`
+thisFolder=`echo $0 | sed 's#env/stop-ftp-morrisjobke\.sh##'`
 
 if [ -z "$thisFolder" ]; then
     thisFolder="."
@@ -33,4 +33,3 @@ done;
 # cleanup
 rm $thisFolder/config.ftp.php
 rm $thisFolder/dockerContainerMorrisJobke.$EXECUTOR_NUMBER.ftp
-

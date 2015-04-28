@@ -23,7 +23,7 @@ echo "Fetch recent atmoz/sftp docker image"
 docker pull atmoz/sftp
 
 # retrieve current folder to place the config in the parent folder
-thisFolder=`echo $0 | replace "env/start-sftp-atmoz.sh" ""`
+thisFolder=`echo $0 | sed 's#env/start-sftp-atmoz\.sh##'`
 
 if [ -z "$thisFolder" ]; then
     thisFolder="."
@@ -65,4 +65,3 @@ sleep 5
 
 # create folder "upload" with correct permissions
 docker exec $container bash -c "mkdir /home/$user/upload && chown $user:users /home/$user/upload"
-
